@@ -33,8 +33,18 @@ if(isset($_POST["submit"]) ){
 			<input type="text" name="nim" id="nim" required>
 		</li>
 		<li>
-			<label for="kelas">Kelas: </label>
-			<input type="text" name="kelas" id="kelas" required>
+			Kelas:
+			<select name="kelas"> 
+			<option value="SI4101">SI4101</option>
+   			<option value="SI4102">SI4102</option>
+   			<option value="SI4103">SI4103</option>
+    			<option value="SI4104">SI4104</option>
+    			<option value="SI4105">SI4105</option>
+    			<option value="SI4106">SI4106</option>
+    			<option value="SI4107">SI4107</option>
+    			<option value="SI4108">SI4108</option>
+    			<option value="SI41INT">SI4INT</option>
+			</select>
 		</li>
 		<li>
 			<label for="tanggal">Tanggal: </label>
