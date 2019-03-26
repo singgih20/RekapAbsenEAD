@@ -40,6 +40,7 @@ if(isset($_POST["cari"]) ){
 		<th>Shift</th>
 		<th>Jam Masuk</th>
 		<th>Tanggal</th>
+		<th>Aksi</th>
 	</tr>
 	<?php $no = 1; ?>
 	<?php foreach($assistant as $mhs): ?>
