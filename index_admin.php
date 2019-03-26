@@ -1,15 +1,14 @@
 <?php 
 
 require 'functions.php';
-$mahasiswa = query("SELECT * FROM mahasiswa");
+$assistant = query("SELECT * FROM assistant");
 
 if(isset($_POST["cari"]) ){
 	$keyword = $_POST['keyword'];
-	$mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%' OR nim LIKE '%$keyword%'
-		OR kelas LIKE '%$keyword%' OR tanggal LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'
-
-		");
+	$mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
+		OR shift LIKE '%$keyword%'	");
 }
+
  ?>
 
  <!DOCTYPE html>
@@ -21,7 +20,7 @@ if(isset($_POST["cari"]) ){
  </head>
  <body>
  
-<h1>Rekap Absen Mahasiswa</h1>
+<h1>Rekap Absen Assistant Lab EAD</h1>
 
 <a href="tambah.php">Tambah Data Rekap Absen Mahasiswa</a>
 <br><br>
@@ -37,24 +36,23 @@ if(isset($_POST["cari"]) ){
 	<tr>
 		<th>No.</th>
 		<th>Nama</th>
-		<th>NIM</th>
-		<th>Kelas</th>
+		<th>Kode Assistant</th>
+		<th>Shift</th>
+		<th>Jam Masuk</th>
 		<th>Tanggal</th>
-		<th>Keterangan</th>
-		<th>Aksi</th>
 	</tr>
 	<?php $no = 1; ?>
-	<?php foreach($mahasiswa as $mhs): ?>
+	<?php foreach($assistant as $mhs): ?>
 		<tr>
 			<td><?= $no; ?></td>
 			<td><?= $mhs["nama"]; ?></td>
-			<td><?= $mhs["nim"]; ?></td>
-			<td><?= $mhs["kelas"];?></td>
-			<td><?= $mhs["tanggal"]; ?></td>
-			<td><?= $mhs["keterangan"];?> </td>
+			<td><?= $mhs["kode"]; ?></td>
+			<td><?= $mhs["shift"];?></td>
+			<td><?= $mhs["jam"]; ?></td>
+			<td><?= $mhs["tanggal"];?> </td>
 			<td>
-				<a href="edit.php?id= <?= $mhs["id"]; ?>"> Edit Data | | </a>
-				<a href="hapus.php?id= <?= $mhs["id"]; ?>" onclick="return confirm('Apakah anda yakin?')">Hapus Data</a>
+			<a href="edit.php?id= <?= $mhs["id"]; ?>"> Edit Data | | </a>
+			<a href="hapus.php?id= <?= $mhs["id"]; ?>" onclick="return confirm('Apakah anda yakin?')">Hapus Data</a>
 			</td>
 		</tr>
 		<?php $no++; ?>
