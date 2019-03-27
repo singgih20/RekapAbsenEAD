@@ -1,17 +1,23 @@
 <?php 
 
 require 'functions.php';
-
 if(isset($_POST["register"]) ){
-	if(registrasi($_POST) > 0 ){
-		echo "<script> alert('user baru berhasil ditambahkan');
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    // password_hash($_POST["password"], PASSWORD_DEFAULT);
+	$sql = "INSERT INTO user (username, password) 
+            VALUES ('$username','$password')";
+    
+    if ($conn->query($sql) === TRUE) {
+    	echo "<script> alert('user baru berhasil ditambahkan');
 		</script>";
+		header("Location: login.php");
 	}else{
 		echo "<script> alert('user baru gagal ditambahkan');
 		</script>";
 	}
 }
-
 
  ?>
 

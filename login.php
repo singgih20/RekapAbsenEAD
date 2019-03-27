@@ -4,21 +4,25 @@ require 'functions.php';
 
 if(isset($_POST["login"]) ){
 
-	$username= $_POST["username"];
-	$password = $_POST["password"];
+	$username= filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+	$sql= "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
+	$result = mysqli_query($conn , $sql );
+	// $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+ //    $active = $row['active'];
+ //    $count = mysqli_num_rows($result);
+	$check = mysqli_fetch_array($result);	
+    
+	if(isset($check))
+	{
+		header("Location: index_user.php");
+        exit;
+	}else{
+		echo "<script> alert('username/password salah');
+		</script>";
+		$error = true;
+	}
 
-	$result = mysqli_query($conn , "SELECT * FROM user WHERE username = '$username' " );
-
-	//cek user
-	if(mysqli_num_rows($result) === 1){
-
-		$row = mysqli_fetch_assoc($result);
-		if(password_verify($password, $row["password"] )){
-			header("Location: index.php");
-			exit;
-		}
-	}  
-	$error = true;
 }
 
  ?>
