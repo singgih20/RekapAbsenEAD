@@ -30,7 +30,7 @@ if(isset($_POST["submit"]) ){
 		</li>
 		<li>
 			<label for="Kode">Kode Assistant: </label>
-			<input type="text" name="nim" id="nim" required>
+			<input type="text" name="kode" id="kode" required>
 		</li>
 		<li>
 			Shift:
@@ -38,12 +38,12 @@ if(isset($_POST["submit"]) ){
 			<option value="shift1">shift1</option>
    			<option value="shift2">shift2</option>
    			<option value="shift3">shift3</option>
-    			<option value="shift4">shift4</option>
-    			<option value="shift5">shift5</option>
-    			<option value="shift6">shift6</option>
-    			<option value="shift7">shift7</option>
-    			<option value="shift8">shift8</option>
-    			<option value="shift9">shift9</option>
+    		<option value="shift4">shift4</option>
+    		<option value="shift5">shift5</option>
+    		<option value="shift6">shift6</option>
+    		<option value="shift7">shift7</option>
+    		<option value="shift8">shift8</option>
+    		<option value="shift9">shift9</option>
 			</select>
 		</li>
 		<li>
