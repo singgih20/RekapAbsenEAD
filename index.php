@@ -1,11 +1,11 @@
 <?php 
 
 require 'functions.php';
-$assistant = query("SELECT * FROM assistant");
+$assistant = query("SELECT * FROM assistant ORDER BY jam ASC");
 
 if(isset($_POST["cari"]) ){
 	$keyword = $_POST['keyword'];
-	$mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
+	$assistant = query("SELECT * FROM assistant WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
 		OR shift LIKE '%$keyword%'	");
 }
 
@@ -51,9 +51,9 @@ if(isset($_POST["cari"]) ){
 			<td><?= $mhs["shift"];?></td>
 			<td><?= $mhs["jam"]; ?></td>
 			<td><?= $mhs["tanggal"];?> </td>
-			<td>
-			<a href="edit.php?id= <?= $mhs["id"]; ?>"> Edit Data | | </a>
-			<a href="hapus.php?id= <?= $mhs["id"]; ?>" onclick="return confirm('Apakah anda yakin?')">Hapus Data</a>
+		<td>
+				<a href="edit.php?id= <?= $mhs["id"]; ?>"> Edit Data | | </a>
+				<a href="hapus.php?id= <?= $mhs["id"]; ?>" onclick="return confirm('Apakah anda yakin?')">Hapus Data</a>
 			</td>
 		</tr>
 		<?php $no++; ?>
