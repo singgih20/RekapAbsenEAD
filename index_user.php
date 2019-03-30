@@ -5,8 +5,8 @@ $assistant = query("SELECT * FROM assistant");
 
 if(isset($_POST["cari"]) ){
 	$keyword = $_POST['keyword'];
-	$mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
-		OR shift LIKE '%$keyword%'	");
+	$assistant = query("SELECT * FROM assistant WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
+		OR shift LIKE '%$keyword%'");
 }
 
  ?>
@@ -22,9 +22,9 @@ if(isset($_POST["cari"]) ){
  
 <h1>Rekap Absen Assistant Lab EAD</h1>
 
-<?php echo date("H:i:s . Y:M:d"); ?>
 
 
+<a href="absensi.php">Klik untuk absensi!</a>
 <form method="post" action="">
 	<input type="text" name="keyword" size="50" autofocus placeholder="Masukkan keyword pencarian.." autocomplete="off">
 	<button type="submit" name="cari"> Cari! </button>
