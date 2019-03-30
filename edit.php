@@ -4,7 +4,7 @@ require 'functions.php';
 
 $id = $_GET["id"];
 
-$mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
+$mhs = query("SELECT * FROM assistant WHERE id = $id")[0];
 
 if(isset($_POST["submit"]) ){
 	if(ubah($_POST) > 0 ){
@@ -43,30 +43,30 @@ if(isset($_POST["submit"]) ){
 				<input type="text" name="nama" id = "nama" required value="<?= $mhs["nama"];  ?>">
 			</li>
 			<li>
-				<label for="nim">NIM:</label>
-				<input type="text" name="nim" id = "nim" required value="<?= $mhs["nim"]; ?>">
+				<label for="kode">Kode Assistant:</label>
+				<input type="text" name="kode" id = "kode" required value="<?= $mhs["kode"]; ?>">
 			</li>
 			<li>
-				Kelas:
-				<select name="kelas"> 
-				<option value="SI4101">SI4101</option>
-   				<option value="SI4102">SI4102</option>
-   				<option value="SI4103">SI4103</option>
-    				<option value="SI4104">SI4104</option>
-    				<option value="SI4105">SI4105</option>
-    				<option value="SI4106">SI4106</option>
-    				<option value="SI4107">SI4107</option>
-    				<option value="SI4108">SI4108</option>
-    				<option value="SI41INT">SI4INT</option>
+				Shift:
+			<select name="shift"> 
+			<option value="SI4101">SI4101</option>
+   			<option value="SI4102">SI4102</option>
+   			<option value="SI4103">SI4103</option>
+    		<option value="SI4104">SI4104</option>
+    		<option value="SI4105">SI4105</option>
+    		<option value="SI4106">SI4106</option>
+    		<option value="SI4107">SI4107</option>
+    		<option value="SI4108">SI4108</option>
+    		<option value="SI41INT">SI4INT</option>
 			</select>
 			</li>
 			<li>
-				<label for="tanggal">Tanggal: </label>
-				<input type="text" name="tanggal" id = "tanggal" required value="<?= $mhs["tanggal"]; ?>">
+				<label for="jam">jam: </label>
+				<input type="text" name="jam" id = "jam" required value="<?= $mhs["jam"]; ?>">
 			</li>
 			<li>
-				<label for="keterangan">Keterangan: </label>
-				<input type="text" name="keterangan" id = "keterangan" required value=" <?= $mhs["keterangan"];?>">
+				<label for="tanggal">tanggal: </label>
+				<input type="text" name="tanggal" id = "tanggal" required value=" <?= $mhs["tanggal"];?>"	>
 			</li>
 			<li>
 				<button type="submit" name = "submit"> Ubah data rekap absen </button>
