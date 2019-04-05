@@ -8,9 +8,6 @@ if(isset($_POST["login"]) ){
 	$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 	$sql= "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
 	$result = mysqli_query($conn , $sql );
-	// $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
- //    $active = $row['active'];
- //    $count = mysqli_num_rows($result);
 	$check = mysqli_fetch_array($result);	
     
 	if(isset($check))
@@ -22,41 +19,92 @@ if(isset($_POST["login"]) ){
 		</script>";
 		$error = true;
 	}
-
 }
 
  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>
-		Halaman Login
-	</title>
+	<title>Login User</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-	<h1>Halaman Login</h1>
-	<?php if(isset ($error)) :  ?>
-		<p style="color:red; font-style: italic;">username / password salah </p>
-		<?php endif; ?>
-	<form action="" method="post">
-		
-		<ul>
-			<li>
-				<label for="username"> Username: </label>
-				<input type="text" name="username" id="username">
-			</li>
-			<li>
-				<label for="password"> Password: </label>
-				<input type="password" name="password" id="password">
-			</li>
-			<li>
-				<button type="submit" name="login"> Login </button>
-			</li>
-		</ul>
+	
+	<div class="limiter">
+		<div class="container-login100" style=" background-image: url('images/pexels-photo-315938.jpeg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					User Login
+				</span>
+				<form action= "" method="POST" class="login100-form validate-form p-b-33 p-t-5">
 
-	</form>
-	<a href="registrasi.php">Belum punya akun?</a>
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="username" placeholder="User name" id="username">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Password"  id="password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button type="submit" class="login100-form-btn" name="login">
+							Login
+						</button>
+					</div>
+					<div class="link">
+						<a href="registrasi.php"> belum punya akun?</a>
+						<a class="logad"href="loginadmin.php">login sebagai admin?</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!-- 
+	<div id="dropDownSelect1"></div> -->
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 
 </body>
 </html>
