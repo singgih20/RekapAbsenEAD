@@ -8,7 +8,22 @@ if(!isset($_SESSION["login"]) ){
 
 
 require 'functions.php';
-$assistant = query("SELECT * FROM assistant");
+
+//pagination
+$jumlahDataPerhalaman = 10;
+$jumlahData = count(query("SELECT * FROM assistant"));
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+if(isset($_GET["halaman"]) ) {
+	$halamanAktif= $_GET["halaman"];
+}else{
+	$halamanAktif = 1;
+}
+$awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
+
+$assistant = query("SELECT * FROM assistant LIMIT $awalData, $jumlahDataPerhalaman");
+
+
+
 if(isset($_POST["cari"]) ){
 	$keyword = $_POST['keyword'];
 	$assistant = query("SELECT * FROM assistant WHERE nama LIKE '%$keyword%' OR kode LIKE '%$keyword%'
@@ -16,6 +31,8 @@ if(isset($_POST["cari"]) ){
 }
 $username = $_SESSION["login_user"];
 $user = query("SELECT username FROM user WHERE username = '$username'");
+
+
 
  ?>
 
@@ -65,7 +82,7 @@ $user = query("SELECT username FROM user WHERE username = '$username'");
 					<li>
 						<a href="#"><i class="fa fa-cube"></i> <span>Data Master</span><i class="fa fa-angle-down pull-right" ></i></a>
 						<ul>
-							<li><a href="absensi.php">Request Absen</a></li>
+							<li><a href="absensi.php"><i class="far fa-clipboard"></i> Request Absen</a></li>
 							
 						</ul>
 					</li>
@@ -114,6 +131,21 @@ $user = query("SELECT username FROM user WHERE username = '$username'");
 
 
 	</table>
+	<nav aria-label="Page navigation example">
+ <ul class="pagination">
+		<?php for($i = 1; $i<= $jumlahHalaman; $i++) : ?>
+			<?php if($i == $halamanAktif): ?>
+				<?php if($halamanAktif>1): ?>
+					<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif -1; ?>">Previous</a></li>
+				<?php endif; ?>
+				<li class="page-item"><a class="page-link" href="?halaman=1">1</a></li>
+				<li class="page-item"><a class="page-link" href="?halaman=2">2</a></li> 
+				<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif +1; ?>">Next</a></li>
+			</ul>
+			<?php else: ?>
+			<?php endif; ?>
+		<?php endfor; ?>
+</nav>
 </div>
 </section>
 </div>

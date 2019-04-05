@@ -107,7 +107,7 @@ if(isset($_POST["cari"]) ){
 		<?php $no++; ?>
 		<?php endforeach; ?>
 
-<a href="index.php">back to index</a>
+
 </table>
 </section>
 </div>
