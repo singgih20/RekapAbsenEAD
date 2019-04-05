@@ -63,7 +63,7 @@ if(isset($_POST["cari"]) ){
 						<ul>
 							<li><a href="tambah.php"><i class="fas fa-plus"></i> Tambah Absen</a></li>
 							<li><a href="request.php"><i class="fal fa-sticky-note"></i> Lihat Daftar Request</a></li>
-							<li><a href=""><i class="fas fa-print"></i> Cetak</a></li>
+							<li><a href="cetak.php" target="_blank"><i class="fas fa-print"></i> Cetak</a></li>
 						</ul>
 					</li>
 					
