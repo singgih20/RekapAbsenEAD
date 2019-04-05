@@ -4,105 +4,58 @@ require 'functions.php';
 
 if(isset($_POST["login"]) ){
 
-	$username= $_POST["username"];
-	$password = $_POST["password"];
+  $username= $_POST["username"];
+  $password = $_POST["password"];
 
-	$result = mysqli_query($conn , "SELECT * FROM admin WHERE username = '$username' "  );
+  $result = mysqli_query($conn , "SELECT * FROM admin WHERE username = '$username' "  );
 
-	//cek user
-	if(mysqli_num_rows($result) === 1){
+  //cek user
+  if(mysqli_num_rows($result) === 1){
 
-		$row = mysqli_fetch_assoc($result);
-		if($password === $row["password"] ){
-			//set session
-			$_SESSION["admin"] = true;
-			header("Location: index.php");
-			exit;
-		}
-	}  
-	$error = true;
+    $row = mysqli_fetch_assoc($result);
+    if($password === $row["password"] ){
+      //set session
+      $_SESSION["admin"] = true;
+      header("Location: index.php");
+      exit;
+    }
+  }  
+  $error = true;
 }
 
  ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login Admin</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-</head>
-<body>
-	
-	<div class="limiter">
-		<div class="container-login100" style=" background-image: url('images/pexels-photo-239898.jpeg');">
-			<div class="wrap-login100 p-t-30 p-b-50">
-				<span class="login100-form-title p-b-41">
-					Admin Login
-				</span>
-				<form action= "" method="POST" class="login100-form validate-form p-b-33 p-t-5">
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="User name" id="username">
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					</div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="loginadmin.css">
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password"  id="password">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
+    <title>halaman admin</title>
+  </head>
+  <body>
+   <div class="container">
+     <h2 class ="text-center">Login Admin</h2>
 
-					<div class="container-login100-form-btn m-t-32">
-						<button type="submit" class="login100-form-btn" name="login">
-							Login
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-<!-- 
-	<div id="dropDownSelect1"></div> -->
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+     <form action="" method="post">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="username" class="form-control" name="username" id="username" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" >
+  </div>
+  <div class="form-group form-check">
 
-</body>
+
+  </div>
+  <button type="submit" name="login"class="btn btn-primary">LOGIN</button>
+</form>
+</div>
+  </body>
 </html>
